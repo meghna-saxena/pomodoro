@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
+import Timer from './containers/Timer';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Pomodoro</h1>
+        <Timer />
       </div>
     );
   }
