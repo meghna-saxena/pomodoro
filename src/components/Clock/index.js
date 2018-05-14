@@ -11,10 +11,10 @@ const Clock = (props) => {
     return (
         <div className="container">
             <div>
-                <img src={img} alt="image" style={style} />
-                <div class="centered-text">25:00</div>
+                <img src={img} alt="pomodoro" style={style} />
+                <div className="centered-text">{props.time}</div>
             </div>
-            <button className="start">Start</button>
+            <button className="start" onClick={props.clicked}>Start</button>
             <button className="reset">Reset</button>
         </div>
     )
