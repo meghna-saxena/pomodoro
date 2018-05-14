@@ -14,8 +14,8 @@ const Clock = (props) => {
                 <img src={img} alt="pomodoro" style={style} />
                 <div className="centered-text">{props.time}</div>
             </div>
-            <button className="start" onClick={props.clicked}>Start</button>
-            <button className="reset">Reset</button>
+            <button className="start" onClick={props.start}>Start</button>
+            <button className="reset" onClick={props.reset}>Reset</button>
         </div>
     )
 }

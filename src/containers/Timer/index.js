@@ -4,34 +4,46 @@ import Clock from '../../components/Clock';
 class Timer extends Component {
     state = {
         defaultTime: `${25}:00`,
-        time: 1500000
+        time: `${25 * 60}`
     }
 
-    millisToMinutes = () => {
-        const value = this.state.time;
-        const seconds = value / 60;
-        const minutes = seconds / 1000;
-        console.log(minutes);
+    startTimer = () => {
+        const duration = this.state.time;
+        let timer = duration;
+        let minutes;
+        let seconds;
 
-        this.setState({ defaultTime: `${minutes}:00` })
-        this.startTimer();
+        setInterval(() => {
+            console.log('timer ', timer);
+            --timer;
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            const time = `${minutes}:${seconds}`
+            console.log('In setInterval', time);
+
+            this.setState({ defaultTime: time });
+
+            // if (timer < 0) {
+            //     timer = duration;
+            // }
+
+        }, 1000)
     }
 
-    startTimer() {
-        //write a function of setTimeOut for 25 min 
-        // print some msg after that
-
-        // setTimeout(function, ms);
-
-        const value = this.state.time;
-        setTimeout(() => console.log("Time is up!"), value)
+    resetTimer = () => {
+        this.setState({ defaultTime: `${25}:00` })
     }
 
     render() {
         return (
             <Clock
                 time={this.state.defaultTime}
-                clicked={this.millisToMinutes} />
+                start={this.startTimer}
+                reset={this.resetTimer} />
         )
     }
 }
