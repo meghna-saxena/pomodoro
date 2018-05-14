@@ -3,7 +3,7 @@ import Clock from '../../components/Clock';
 
 class Timer extends Component {
     state = {
-        defaultTime: "Press Start",
+        defaultTime: `${25}:00`,
         time: 1500000
     }
 
