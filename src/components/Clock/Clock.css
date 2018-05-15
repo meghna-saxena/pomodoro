@@ -20,7 +20,7 @@ button.start, button.reset{
     position: absolute;
     font-size: 50px;
     color: antiquewhite;
-    top: 38%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
