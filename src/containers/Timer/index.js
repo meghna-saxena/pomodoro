@@ -4,7 +4,9 @@ import Clock from '../../components/Clock';
 class Timer extends Component {
     state = {
         defaultTime: `${25}:00`,
-        time: `${25 * 60}`
+        time: `${25 * 60}`,
+        interval: null,
+        toggleButton: false
     }
 
     startTimer = () => {
@@ -13,9 +15,9 @@ class Timer extends Component {
         let minutes;
         let seconds;
 
-        setInterval(() => {
+        const interval = setInterval(() => {
             console.log('timer ', timer);
-            --timer;
+            timer = timer - 1;
             minutes = parseInt(timer / 60, 10);
             seconds = parseInt(timer % 60, 10);
 
@@ -26,15 +28,13 @@ class Timer extends Component {
             console.log('In setInterval', time);
 
             this.setState({ defaultTime: time });
+        }, 1000);
 
-            // if (timer < 0) {
-            //     timer = duration;
-            // }
-
-        }, 1000)
+        this.setState({ interval, toggleButton: true })
     }
 
     resetTimer = () => {
+        clearInterval(this.state.interval);
         this.setState({ defaultTime: `${25}:00` })
     }
 
@@ -43,6 +43,7 @@ class Timer extends Component {
             <Clock
                 time={this.state.defaultTime}
                 start={this.startTimer}
+                stop={this.state.toggleButton}
                 reset={this.resetTimer} />
         )
     }
