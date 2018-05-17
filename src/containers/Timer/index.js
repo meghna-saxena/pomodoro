@@ -27,7 +27,7 @@ class Timer extends Component {
             const time = `${minutes}:${seconds}`
             console.log('In setInterval', time);
 
-            if (minutes == 0 && seconds == 0) {
+            if (minutes === 0 && seconds === 0) {
                 this.beep();
             }
 
